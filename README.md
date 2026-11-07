@@ -1,2 +1,19 @@
-# b-dali-ordering-app
-B-Dali | بدالي — A modern Arabic food ordering website for the B-Dali shawarma restaurant in Tiaret, Algeria. Featuring an elegant red, black and white design, interactive menu, shopping cart and WhatsApp ordering.
+# B-Dali Ordering Website — Demo
+
+واجهة طلبات تجريبية لمطعم B-Dali (بدالي) في تيارت، مصممة بالعربية RTL وبأسلوب داكن راقٍ مع لمسات ذهبية.
+
+## تشغيل محلي
+افتح `index.html` في المتصفح.
+
+## نشر على GitHub Pages
+1. أنشئ Repository في GitHub وارفع الملفات الثلاثة: `index.html`, `style.css`, `app.js` (ويمكن رفع README).
+2. من **Settings → Pages** اختر **Deploy from a branch**.
+3. اختر `main` و`/(root)` ثم Save.
+4. انتظر ظهور رابط الموقع.
+
+## ملاحظات مهمة قبل النشر
+- هذه نسخة واجهة Front-end تجريبية وليست نظام إدارة طلبات حقيقي.
+- قائمة الطعام والأسعار والصور الموضوعة داخل `app.js` هي بيانات تجريبية للعرض، وليست قائمة مؤكدة للمطعم.
+- معلومات اتصال/موقع المحل المتاحة علنًا أُدرجت كبيانات أولية، ويجب تأكيدها مع الإدارة.
+- زر الطلب يفتح WhatsApp برقم مدرج كرقم عام للمحل في مصادر الدليل؛ تأكدوا منه قبل الإطلاق.
+- لتطبيق فعلي، يلزم ربط الطلبات بواجهة إدارة/قاعدة بيانات وتأكيد مناطق التوصيل، الرسوم، ساعات العمل، وطرق الدفع.

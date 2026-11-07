@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171613">
+  <title>B-Dali | بدالي — اطلب شاورمتك</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="announcement">🔥 نكهة تستاهل… اطلبها على ذوقك</div>
+  <header class="header">
+    <a class="brand" href="#" aria-label="B-Dali الصفحة الرئيسية">
+      <span class="brand-mark">B</span><span><b>B-Dali</b><small>بدالي · تيارت</small></span>
+    </a>
+    <nav><a href="#menu">القائمة</a><a href="#about">عن بدالي</a><a href="#contact">تواصل معنا</a></nav>
+    <button class="cart-btn" id="cartOpen">سلة الطلب <span id="cartCount">0</span></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> الشاورما كما تحبها</div>
+        <h1>لقمة تردّ الروح.<br><em>وطعم ما يتنساش.</em></h1>
+        <p>اختار وجبتك، زيد لمستك الخاصة، وخلي الباقي علينا. بدالي… نكهة تجمعنا في تيارت.</p>
+        <div class="hero-actions"><a class="primary" href="#menu">اكتشف القائمة <span>←</span></a><span class="note">طازج · شهي · على ذوقك</span></div>
+        <div class="hero-stats"><div><strong>طازج</strong><small>تحضير عند الطلب</small></div><div><strong>على ذوقك</strong><small>اختيارات وإضافات</small></div><div><strong>بدالي</strong><small>تيارت</small></div></div>
+      </div>
+      <div class="hero-art">
+        <div class="glow"></div>
+        <div class="food-badge">B-DALI<br><small>THE SHAWARMA SPOT</small></div>
+        <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=900&q=85" alt="" onerror="this.src='https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=900&q=85'">
+        <div class="floating-card"><span>⭐</span><div><b>شاورما على الأصول</b><small>اختيارك يبدأ من هنا</small></div></div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="section-heading"><div><div class="eyebrow">قائمة بدالي</div><h2>اختار واش تشتهي</h2></div><div class="search"><span>⌕</span><input id="search" placeholder="قلب على وجبتك..."></div></div>
+      <div class="categories" id="categories"></div>
+      <div class="menu-grid" id="menuGrid"></div>
+      <p class="menu-disclaimer">ملاحظة: هذه قائمة تجريبية للعرض فقط. الأطباق والأسعار والصور يلزم تأكيدها من إدارة B-Dali قبل النشر.</p>
+    </section>
+
+    <section class="feature" id="about"><div class="feature-icon">✦</div><div><div class="eyebrow">السر في التفاصيل</div><h2>ذوقك هو الوصفة.</h2><p>من أول اختيار حتى آخر لقمة، صمّمنا تجربة طلب بسيطة وواضحة، باش تلقى واش تحب بلا تعقيد.</p></div><a href="#menu" class="outline">ابدأ طلبك <span>←</span></a></section>
+    <section class="contact" id="contact"><div><div class="eyebrow">تلقانا في تيارت</div><h2>بدالي أقرب مما تتصور.</h2><p>تواصل معنا للاستفسار أو لتأكيد الطلب.</p></div><div class="contact-card"><span>📍</span><div><b>B-Dali · تيارت</b><small>9868+VRH، تيارت — الجزائر</small><a href="tel:+213541959275">0541 95 92 75</a></div></div></section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">B</span><span><b>B-Dali</b><small>بدالي · تيارت</small></span></a><span>© <span id="year"></span> B-Dali. كل الحقوق محفوظة.</span></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="سلة الطلب">
+    <div class="drawer-head"><div><small>طلبك من</small><h3>بدالي</h3></div><button id="cartClose" aria-label="إغلاق">×</button></div>
+    <div class="cart-items" id="cartItems"><div class="empty-cart">السلة فارغة حالياً 🍽️<br><small>اختار وجبتك من القائمة</small></div></div>
+    <div class="cart-bottom"><div class="total"><span>المجموع</span><strong id="cartTotal">0 دج</strong></div><button class="primary full" id="checkout">إرسال الطلب عبر واتساب</button><small class="checkout-note">تأكيد الطلب والتوصيل يتمّان مباشرة مع المطعم.</small></div>
+  </aside>
+  <div class="toast" id="toast">تمت الإضافة للسلة ✓</div>
+  <script src="app.js"></script>
+</body>
+</html>

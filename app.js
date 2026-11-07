@@ -1,0 +1,20 @@
+const menu = [
+ {id:1,name:"شاورما بدالي",category:"شاورما",price:450,tag:"الأكثر طلباً",desc:"شاورما دجاج متبّلة، بطاطا وصوص بدالي الخاص.",image:"https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=800&q=80"},
+ {id:2,name:"شاورما كلاسيك",category:"شاورما",price:350,tag:"كلاسيك",desc:"الطعم الأصيل في خبز طري مع إضافات متوازنة.",image:"https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=800&q=80"},
+ {id:3,name:"طبق شاورما",category:"وجبات",price:750,tag:"وجبة كاملة",desc:"شرائح شاورما مع البطاطا، السلطة والصوص.",image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"},
+ {id:4,name:"شاورما دبل",category:"شاورما",price:600,tag:"للي يحب الزيادة",desc:"حصة مضاعفة من الشاورما مع صوص تختاره.",image:"https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=800&q=80"},
+ {id:5,name:"بطاطا كريسبي",category:"إضافات",price:200,tag:"إضافة",desc:"بطاطا ذهبية مقرمشة، مناسبة مع كل وجبة.",image:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80"},
+ {id:6,name:"مشروب بارد",category:"مشروبات",price:120,tag:"بارد",desc:"اختار مشروبك المفضل لإكمال الوجبة.",image:"https://images.unsplash.com/photo-1513558161293-cadaa1faf7f4?auto=format&fit=crop&w=800&q=80"}
+];
+let category="الكل", cart={};
+const $=s=>document.querySelector(s);
+function renderCategories(){let cats=["الكل",...new Set(menu.map(x=>x.category))];$("#categories").innerHTML=cats.map(c=>`<button class="category ${c===category?'active':''}" onclick="setCategory('${c}')">${c}</button>`).join("")}
+function renderMenu(){let q=$("#search").value.trim();let list=menu.filter(x=>(category==="الكل"||x.category===category)&&(`${x.name} ${x.category} ${x.desc}`).includes(q));$("#menuGrid").innerHTML=list.map(x=>`<article class="dish"><div class="dish-image"><img src="${x.image}" alt="${x.name}" loading="lazy" onerror="this.style.opacity='.2'"><span class="dish-tag">${x.tag}</span></div><div class="dish-content"><div class="dish-title"><h3>${x.name}</h3><span class="price">${x.price} دج</span></div><p>${x.desc}</p><button class="add-btn" onclick="addToCart(${x.id})">＋ زيد للسلة</button></div></article>`).join("")||'<p>ما لقيناش وجبات بهذا الاسم.</p>'}
+function setCategory(c){category=c;renderCategories();renderMenu()}
+function addToCart(id){cart[id]=(cart[id]||0)+1;renderCart();let t=$("#toast");t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1400)}
+function changeQty(id,n){cart[id]=(cart[id]||0)+n;if(cart[id]<=0)delete cart[id];renderCart()}
+function renderCart(){let ids=Object.keys(cart);$("#cartCount").textContent=ids.reduce((s,id)=>s+cart[id],0);$("#cartTotal").textContent=ids.reduce((s,id)=>s+menu.find(x=>x.id==id).price*cart[id],0)+" دج";$("#cartItems").innerHTML=ids.length?ids.map(id=>{let x=menu.find(a=>a.id==id);return `<div class="cart-row"><div><b>${x.name}</b><small>${x.price} دج</small></div><div class="qty"><button onclick="changeQty(${id},-1)">−</button><span>${cart[id]}</span><button onclick="changeQty(${id},1)">+</button></div></div>`}).join(""):'<div class="empty-cart">السلة فارغة حالياً 🍽️<br><small>اختار وجبتك من القائمة</small></div>'}
+function toggleCart(open){$("#cartDrawer").classList.toggle("open",open);$("#overlay").classList.toggle("show",open)}
+$("#cartOpen").onclick=()=>toggleCart(true);$("#cartClose").onclick=()=>toggleCart(false);$("#overlay").onclick=()=>toggleCart(false);$("#search").addEventListener("input",renderMenu);
+$("#checkout").onclick=()=>{let ids=Object.keys(cart);if(!ids.length){alert("السلة فارغة! اختار وجبة أولاً.");return}let lines=ids.map(id=>{let x=menu.find(a=>a.id==id);return `• ${x.name} × ${cart[id]} = ${x.price*cart[id]} دج`});let total=ids.reduce((s,id)=>s+menu.find(x=>x.id==id).price*cart[id],0);let msg=`السلام عليكم B-Dali، حبيت نأكد هذا الطلب:\\n${lines.join("\\n")}\\nالمجموع: ${total} دج\\nالاسم: \\nالعنوان: \\nملاحظة: `;window.open("https://wa.me/213541959275?text="+encodeURIComponent(msg),"_blank")};
+$("#year").textContent=new Date().getFullYear();renderCategories();renderMenu();renderCart();
