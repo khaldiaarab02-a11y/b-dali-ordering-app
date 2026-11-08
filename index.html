@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#171613">
+  <meta name="theme-color" content="#e51d2a">
+  <meta name="description" content="B-Dali بدالي — اطلب الشاورما والوجبات في تيارت.">
+  <link rel="manifest" href="manifest.json">
   <title>B-Dali | بدالي — اطلب شاورمتك</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +19,7 @@
       <img class="brand-mark" src="ninja-mascot.jpg" alt="شعار نينجا B-Dali"><span><b>B-Dali</b><small>بدالي · تيارت</small></span>
     </a>
     <nav><a href="#menu">القائمة</a><a href="#about">عن بدالي</a><a href="#contact">تواصل معنا</a></nav>
-    <button class="cart-btn" id="cartOpen">سلة الطلب <span id="cartCount">0</span></button>
+    <div class="header-actions"><button class="lang-btn" id="langToggle" type="button">FR</button><button class="cart-btn" id="cartOpen">سلة الطلب <span id="cartCount">0</span></button></div>
   </header>
 
   <main>
@@ -54,9 +56,21 @@
   <aside class="cart-drawer" id="cartDrawer" aria-label="سلة الطلب">
     <div class="drawer-head"><div><small>طلبك من</small><h3>بدالي</h3></div><button id="cartClose" aria-label="إغلاق">×</button></div>
     <div class="cart-items" id="cartItems"><div class="empty-cart">السلة فارغة حالياً 🍽️<br><small>اختار وجبتك من القائمة</small></div></div>
-    <div class="cart-bottom"><div class="total"><span>المجموع</span><strong id="cartTotal">0 دج</strong></div><button class="primary full" id="checkout">إرسال الطلب عبر واتساب</button><small class="checkout-note">تأكيد الطلب والتوصيل يتمّان مباشرة مع المطعم.</small></div>
+    <div class="cart-bottom"><div class="total"><span>المجموع</span><strong id="cartTotal">0 دج</strong></div><button class="primary full" id="checkout">إتمام الطلب</button><small class="checkout-note">تأكيد الطلب والتوصيل يتمّان مباشرة مع المطعم.</small></div>
   </aside>
+  <div class="checkout-modal" id="checkoutModal">
+    <form id="checkoutForm" class="checkout-form">
+      <div class="drawer-head"><div><small id="checkoutSub">إتمام الطلب</small><h3 id="checkoutTitle">معلومات التوصيل</h3></div><button type="button" id="checkoutClose" aria-label="إغلاق">×</button></div>
+      <label><span id="nameLabel">الاسم الكامل</span><input id="customerName" required autocomplete="name"></label>
+      <label><span id="phoneLabel">رقم الهاتف</span><input id="customerPhone" required type="tel" autocomplete="tel"></label>
+      <label><span id="addressLabel">عنوان التوصيل</span><textarea id="customerAddress" required rows="3"></textarea></label>
+      <label><span id="noteLabel">ملاحظة (اختياري)</span><textarea id="customerNote" rows="2"></textarea></label>
+      <div class="payment-info" id="paymentInfo">الدفع نقدًا عند الاستلام</div>
+      <button class="primary full" type="submit" id="confirmOrder">تأكيد الطلب عبر WhatsApp</button>
+      <small class="checkout-note" id="checkoutHint">سيتم فتح WhatsApp برسالة جاهزة لإرسال طلبك للمطعم.</small>
+    </form>
+  </div>
   <div class="toast" id="toast">تمت الإضافة للسلة ✓</div>
-  <script src="app.js"></script>
+  <script src="app.js"></script><script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}))}</script>
 </body>
 </html>

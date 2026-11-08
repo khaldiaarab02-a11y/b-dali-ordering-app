@@ -1,0 +1,16 @@
+{
+  "name": "B-Dali | بدالي",
+  "short_name": "B-Dali",
+  "description": "طلبات B-Dali في تيارت",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#101010",
+  "theme_color": "#e51d2a",
+  "icons": [
+    {
+      "src": "ninja-mascot.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ]
+}
